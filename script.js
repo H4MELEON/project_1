@@ -13,14 +13,14 @@ let appData = {
     savings: false
 };
 
-let question_1_1 = prompt("Введите обязательную статью расходов в этом месяце");
-let question_1_2 = prompt("Во сколько обойдется?");
-let question_2_1 = prompt("Введите обязательную статью расходов в этом месяце");
-let question_2_2 = prompt("Во сколько обойдется?");
+let expense_1 = prompt("Введите обязательную статью расходов в этом месяце");
+let cost_1 = prompt("Во сколько обойдется?");
+let expense_2 = prompt("Введите обязательную статью расходов в этом месяце");
+let cost_2 = prompt("Во сколько обойдется?");
 
 appData.expenses = {
-    question_1_1: question_1_2,
-    question_2_1: question_2_2
+    expense_1: cost_1,
+    expense_2: cost_2
 };
 
 alert(appData.budget / 30);

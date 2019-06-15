@@ -1,8 +1,16 @@
 'use strict'
 
-let money = +prompt("Ваш бюджет на месяц?", "");
+let money, time;
 
-let time = prompt("Введите дату в формате YYYY-MM-DD", "");
+function start() {
+    money = +prompt("Ваш бюджет на месяц?", "");
+    time = prompt("Введите дату в формате YYYY-MM-DD", "");
+
+    if (isNaN(money) || money == "") {
+        start();
+    }
+}
+start();
 
 let appData = {
     budget: money,
@@ -13,43 +21,26 @@ let appData = {
     savings: false
 };
 
-for (let i = 0; i < 2; ++i) {
-    let expense = prompt("Введите обязательную статью расходов в этом месяце", ""),
-        cost = +prompt("Во сколько обойдется?", "");
-
-    if ((typeof (expense) === "string") && (expense != null) && (cost != null) 
-        && (expense != null) && (cost != null) && (expense.length <= 50)) {
-        appData.expenses[expense] = cost;
+function chooseExpenses() {
+    for (let i = 0; i < 2; ++i) {
+        let expense = prompt("Введите обязательную статью расходов в этом месяце", ""),
+            cost = +prompt("Во сколько обойдется?", "");
+    
+        if ((typeof (expense) === "string") && (expense != null) && (cost != null)
+            && (expense != null) && (cost != null) && (expense.length <= 50)) {
+            appData.expenses[expense] = cost;
+        } else {
+            --i;
+        }
     }
 }
+chooseExpenses();
 
-// let i = 0;
-// while (i < 2) {
-//     let expense = prompt("Введите обязательную статью расходов в этом месяце", ""),
-//         cost = +prompt("Во сколько обойдется?", "");
-
-//     if ((typeof (expense) === "string") && (expense != null) && (cost != null) 
-//         && (expense != null) && (cost != null) && (expense.length <= 50)) {
-//         appData.expenses[expense] = cost;
-//     }
-//     ++i;
-// }
-
-// i = 0;
-// do {
-//     let expense = prompt("Введите обязательную статью расходов в этом месяце", ""),
-//         cost = +prompt("Во сколько обойдется?", "");
-
-//     if ((typeof (expense) === "string") && (expense != null) && (cost != null) 
-//         && (expense != null) && (cost != null) && (expense.length <= 50)) {
-//         appData.expenses[expense] = cost;
-//     }
-//     ++i;
-// } while (i < 2);
-
-appData.dayBudget = appData.budget / 30;
-
-alert("Ежедневный бюджет: " + appData.dayBudget);
+function detectDayBudget() {
+    appData.dayBudget = +(appData.budget / 30).toFixed(2);
+    alert("Ежедневный бюджет: " + appData.dayBudget);
+}
+detectDayBudget();
 
 if (appData.dayBudget <= 100) {
     console.log("Низкий уровень достатка");

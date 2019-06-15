@@ -1,7 +1,8 @@
 'use strict'
 
 //Перечень функций
-function start() {
+{
+var start = function() {
     money = +prompt("Ваш бюджет на месяц?", "");
     time = prompt("Введите дату в формате YYYY-MM-DD", "");
 
@@ -10,7 +11,7 @@ function start() {
     }
 }
 
-function chooseExpenses() {
+var chooseExpenses = function() {
     let expense, cost;
     do {
         expense = prompt("Введите обязательную статью расходов в этом месяце", "");
@@ -19,12 +20,12 @@ function chooseExpenses() {
     appData.expenses[expense] = cost;
 }
 
-function detectDayBudget() {
+var detectDayBudget = function() {
     appData.dayBudget = +(appData.budget / 30).toFixed();
     alert("Ежедневный бюджет: " + appData.dayBudget);
 }
 
-function detectLevel() {
+var detectLevel = function() {
     if (appData.dayBudget <= 100) {
         console.log("Низкий уровень достатка");
     } else if (appData.dayBudget <= 2000) {
@@ -34,23 +35,25 @@ function detectLevel() {
     }
 }
 
-function checkSavings() {
+var checkSavings = function() {
     if (appData.savings) {
-        let save = +prompt("Каковы ваши наклоения?"),
+        let save = +prompt("Каковы ваши накопления?"),
             percent = +prompt("Под какой процент?");
         appData.monthIncome = save / 100 / 12 * percent;
         alert("Ваш доход за месяц: " + appData.monthIncome);
     }
 }
 
-function chooseOptExpenses(num) {
+var chooseOptExpenses = function(num) {
     let optExpense;
     do {
         optExpense = prompt("Статья необязательных расходов?");
     } while (optExpense == null || optExpense == "");
     appData.optionalExpenses[num] = optExpense;
 }
+}
 
+//Основной код
 let money, time;
 
 start();

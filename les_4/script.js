@@ -95,3 +95,8 @@ for (let i = 0; i < 3; ++i) {
 }
 
 appData.functions.chooseIncome();
+
+console.log("Наша программа включает в себя данные:");
+for (const key in appData) {
+    console.log(key + ": " + appData[key]);
+}

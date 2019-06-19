@@ -11,6 +11,7 @@ let body = document.querySelector("body");
 body.style.background = 'url(./img/apple_true.jpg) center no-repeat';
 
 document.getElementById("title").textContent = 'Мы продаем только подлинную технику Apple';
+document.getElementById("title").style.fontSize = '10rem';
 
 document.querySelector(".adv").remove();
 
